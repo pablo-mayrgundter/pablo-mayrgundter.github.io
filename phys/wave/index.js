@@ -26,8 +26,8 @@ function anim(timestamp) {
   //sinY(c, phaseDelta, Pi);
   //pixelWaves(c, phaseDelta);
   //mergeSplit(c, phaseDelta);
-  //randomWaves(c, phaseDelta);
-  randomWaves2(c, phaseDelta);
+  randomWaves(c, phaseDelta);
+  //randomWaves2(c, phaseDelta);
   window.requestAnimationFrame(anim);
 }
 
