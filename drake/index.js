@@ -1,8 +1,7 @@
 import {getHashParams,setHashParams} from '/net/web/hashparams.js';
-
-function $(id) {
-  return document.getElementById(id);
-}
+import {dom} from '/net/web/dom.js';
+import {fetch} from '/net/web/xhr.js';
+import {Dataset} from './dataset.js';
 
 function num(input) {
   return parseFloat(input.value);
@@ -43,7 +42,7 @@ class Form {
     this.Fi = f.Fi;
     this.Fc = f.Fc;
     this.L = f.L;
-    this.button = $('button');
+    this.button = dom('button');
     this.button.onclick = update;
   }
   toModel() {
@@ -56,25 +55,39 @@ class Form {
     this.model.L = num(this.L);
   }
   fromModel(m) {
-    this.N.value = numberWithCommas(this.model.N);
-    this.Rs.value = this.model.Rs;
-    this.Fp.value = this.model.Fp;
-    this.Ne.value = this.model.Ne;
-    this.Fl.value = this.model.Fl;
-    this.Fi.value = this.model.Fi;
-    this.Fc.value = this.model.Fc;
-    this.L.value = this.model.L;
+    this.N.value = numberWithCommas(m.N);
+    this.Rs.value = m.Rs;
+    this.Fp.value = m.Fp;
+    this.Ne.value = m.Ne;
+    this.Fl.value = m.Fl;
+    this.Fi.value = m.Fi;
+    this.Fc.value = m.Fc;
+    this.L.value = m.L;
   }
 }
 
 const M = new Model();
+let D;
 let F;
 
 function update() {
   F.toModel();
   M.calculateDrakeNumber();
-  F.fromModel();
+  F.fromModel(M);
   setHashParams(M);
+}
+
+function loadData() {
+  const d = new Dataset();
+  fetch('/drake/dataset.csv', (rsp) => {
+      d.fromCsv(rsp);
+      d.show(dom('dataset'), (row) => {
+          console.log('use this row: ', row);
+          F.fromModel(row);
+          update();
+        });
+    });
+  return d; // TODO(pablo): promise?
 }
 
 function init() {
@@ -85,6 +98,7 @@ function init() {
   F.fromModel(M);
   update();
   setHashParams(M)
+  D = loadData();
 }
 
 init();

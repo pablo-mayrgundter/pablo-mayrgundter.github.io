@@ -32,9 +32,18 @@ button {
 }
 
 #footer {
-  position: absolute;
   width: auto;
-  bottom: 1em;
+  margin-top: 10em;
   padding: 1em;
   border-top: solid 1px grey;
+}
+
+#dataset table {
+  width: 95%;
+  border-collapse: collapse;
+}
+
+#dataset th, #dataset td {
+  border: solid 1px grey;
+  padding: 0.5em;
 }
