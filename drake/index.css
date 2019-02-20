@@ -1,5 +1,6 @@
 body {
   font-family: Arial;
+  margin: 1em;
 }
 
 th, td, input {
@@ -23,8 +24,17 @@ input {
 
 button {
   border-radius: 3px;
+  margin: 1em;
 }
 
 #N {
   font-weight: bold;
+}
+
+#footer {
+  position: absolute;
+  width: auto;
+  bottom: 1em;
+  padding: 1em;
+  border-top: solid 1px grey;
 }
