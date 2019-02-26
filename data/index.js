@@ -69,7 +69,7 @@ function init() {
   fetch('/data/sets/drake/model.json', (rsp) => {
       M = JSON.parse(rsp);
       (async () => {
-        const module = await import('/data/sets/drake/control.jsm');
+        const module = await import('/data/sets/drake/control.mjs');
         console.log(module.Control);
         const c = new module.Control(M);
         onLoad(M, c);
