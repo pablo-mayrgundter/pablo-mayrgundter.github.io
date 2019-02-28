@@ -1,11 +1,11 @@
 {
-  "N": 10,
-  "Rs": 10,
-  "Fp": 1,
+  "N": 20,
+  "Rs": 1,
+  "Fp": 0.2,
   "Ne": 1,
   "Fl": 1,
   "Fi": 1,
-  "Fc": 1,
-  "L": 1,
-  "Reference": "Simple example"
+  "Fc": 0.1,
+  "L": 1000,
+  "Reference": "Drake et. al"
 }
