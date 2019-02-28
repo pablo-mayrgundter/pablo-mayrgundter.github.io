@@ -1,11 +1,11 @@
 {
   "N": 10,
-  "Rs": 100,
+  "Rs": 10,
   "Fp": 1,
   "Ne": 1,
   "Fl": 1,
   "Fi": 1,
   "Fc": 1,
   "L": 1,
-  "Reference": ""
+  "Reference": "Simple example"
 }
