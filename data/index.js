@@ -21,12 +21,16 @@ class Form {
   }
   fromModel(m) {
     for (let i in m) {
-      this.form[i].value = parseFloat(m[i]);
+      const parsed = parseFloat(m[i]);
+      this.form[i].value = isNaN(parsed) ? m[i] : parsed;
     }
   }
   toModel(m) {
-    for (let i in m)
-      m[i] = parseFloat(this.form[i].value);
+    for (let i in m) {
+      const formVal = this.form[i].value;
+      const parsed = parseFloat(formVal);
+      m[i] = isNaN(parsed) ? formVal : parsed;
+    }
   }
 }
 
