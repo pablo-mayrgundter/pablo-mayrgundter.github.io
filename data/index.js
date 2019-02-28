@@ -20,8 +20,9 @@ class Form {
     this.button.onclick = update;
   }
   fromModel(m) {
-    for (let i in m)
+    for (let i in m) {
       this.form[i].value = parseFloat(m[i]);
+    }
   }
   toModel(m) {
     for (let i in m)
@@ -62,19 +63,15 @@ function onLoad(model, control) {
   F = new Form(document.forms.default);
   F.fromModel(model);
   D = loadData();
-  console.log(F);
 }
 
-function init() {
-  fetch('/data/sets/drake/model.json', (rsp) => {
+export function init(datasetName) {
+  fetch(`/data/sets/${datasetName}/model.json`, (rsp) => {
       M = JSON.parse(rsp);
       (async () => {
-        const module = await import('/data/sets/drake/control.mjs');
-        console.log(module.Control);
+        const module = await import(`/data/sets/${datasetName}/control.mjs`);
         const c = new module.Control(M);
         onLoad(M, c);
       })();
     });
 }
-
-init();
