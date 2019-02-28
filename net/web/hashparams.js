@@ -13,7 +13,7 @@ export function getHashParams(hostObj) {
   }
   return hash.split(AND).reduce((params, item) => {
       const parts = item.split(ASSIGN);
-      params[parts[0]] = parts[1];
+      params[parts[0]] = decodeURIComponent(parts[1]);
       return params;
     }, hostObj || {});
 }
