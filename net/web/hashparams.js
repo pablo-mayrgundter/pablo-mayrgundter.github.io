@@ -13,7 +13,11 @@ export function getHashParams(hostObj) {
   }
   return hash.split(AND).reduce((params, item) => {
       const parts = item.split(ASSIGN);
-      params[parts[0]] = decodeURIComponent(parts[1]);
+      let val = decodeURIComponent(parts[1]);
+      if (val.indexOf('{') != -1) {
+        val = JSON.parse(val);
+      }
+      params[parts[0]] = val;
       return params;
     }, hostObj || {});
 }
@@ -22,9 +26,7 @@ export function getHashParams(hostObj) {
  * style string. */
 export function setHashParams(params) {
   const arr = [];
-  for (let i in params) {
-    arr.push(i + ASSIGN + params[i]);
-  }
-  location.hash = arr.join(AND);
+  let val = JSON.stringify(params);
+  val = encodeURIComponent(val);
+  location.hash = 'json' + ASSIGN + val;
 }
-

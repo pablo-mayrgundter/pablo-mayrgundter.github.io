@@ -1,41 +1,57 @@
-const uniforms = {
-  iGlobalTime: {
-    type: "f",
-    value: 1.0
-  },
-  iResolution: {
-    type: "v2",
-    value: new THREE.Vector2()
-  },
-  iMouse: {
-    type: "v2",
-    value: new THREE.Vector2()
-  },
-  iZoom: {
-    type: "f",
-    value: 1.0
-  },
-  iIter: {
-    type: "i",
-    value: 8
-  }
-};
+import * as THREE from '/js/three-83.module.js';
+import * as hash from '../net/web/hashparams.js';
+
+let uniforms = hash.getHashParams();
+
+// http://localhost:8090/fun/flame.html#json=%7B%22time%22%3A%7B%22type%22%3A%22f%22%2C%22value%22%3A55.888%7D%2C%22rez%22%3A%7B%22type%22%3A%22v2%22%2C%22value%22%3A%7B%22x%22%3A1440%2C%22y%22%3A513%7D%7D%2C%22mouse%22%3A%7B%22type%22%3A%22v2%22%2C%22value%22%3A%7B%22x%22%3A686%2C%22y%22%3A1%7D%7D%2C%22zoom%22%3A%7B%22type%22%3A%22f%22%2C%22value%22%3A2.6920000000000064%7D%2C%22iter%22%3A%7B%22type%22%3A%22i%22%2C%22value%22%3A6%7D%7D
+if (uniforms && uniforms.json) {
+  uniforms = uniforms.json;
+} else {
+  uniforms = {
+    time: {
+      type: "f",
+      value: 1.0
+    },
+    rez: {
+      type: "v2",
+      value: new THREE.Vector2()
+    },
+    mouse: {
+      type: "v2",
+      value: new THREE.Vector2()
+    },
+    zoom: {
+      type: "f",
+      value: 1.0
+    },
+    iter: {
+      type: "i",
+      value: 8
+    }
+  };
+}
 
 document.onmousemove = (e) => {
   e = e || window.event;
-  uniforms.iMouse.value.x = e.clientX;
-  uniforms.iMouse.value.y = e.clientY;
+  uniforms.mouse.value.x = e.clientX;
+  uniforms.mouse.value.y = e.clientY;
+  hash.setHashParams(uniforms);
 };
 
 document.onwheel = (e) => {
-  uniforms.iZoom.value += 0.001 * e.deltaY;
+  uniforms.zoom.value += 0.001 * e.deltaY;
+  uniforms.zoom.value.toFixed(3);
+  hash.setHashParams(uniforms);
 };
 
 document.onkeypress = (e) => {
   switch (e.which) {
-  case 91: uniforms.iIter.value = uniforms.iIter.value < 1 ? 0 : uniforms.iIter.value - 1; break; // '['
-  case 93: uniforms.iIter.value++; break; // '['
+  // '['
+  case 91: uniforms.iter.value = uniforms.iter.value < 1 ? 0 : uniforms.iter.value - 1; break;
+  // ']'
+  case 93: uniforms.iter.value++; break;
   }
+  hash.setHashParams(uniforms);
 };
 
 function init(item) {
@@ -51,17 +67,16 @@ function init(item) {
   function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    webgl.setSize(window.innerWidth, window.innerHeight);
   }
   window.addEventListener('resize', onWindowResize, false);
-  renderer = webgl;
   const light = new THREE.HemisphereLight(0xeeeeee, 0x888888, 1);
   light.position.set(0, 20, 0);
   scene.add(light);
 
   function render() {
     item.update();
-    renderer.render(scene, camera);
+    webgl.render(scene, camera);
     requestAnimationFrame(render);
   }
   scene.add(item.obj);
@@ -70,12 +85,12 @@ function init(item) {
 
 function GameObject() {
   this.geometry = new THREE.PlaneGeometry(window.innerWidth, window.innerHeight, 1);
-  uniforms.iResolution.value.x = window.innerWidth;
-  uniforms.iResolution.value.y = window.innerHeight;
+  uniforms.rez.value.x = window.innerWidth;
+  uniforms.rez.value.y = window.innerHeight;
   this.material = new THREE.ShaderMaterial({
       uniforms: uniforms,
-      vertexShader: document.getElementById('general').textContent,
-      fragmentShader: document.getElementById('frag1').textContent
+      vertexShader: document.getElementById('main.vert').textContent,
+      fragmentShader: document.getElementById('flame1.frag').textContent
     });
   this.obj = new THREE.Mesh(this.geometry, this.material);
   this.obj.startTime = Date.now();
@@ -85,7 +100,7 @@ function GameObject() {
 GameObject.prototype.update = function() {
   const elapsedMilliseconds = Date.now() - this.obj.startTime;
   const elapsedSeconds = elapsedMilliseconds / 1000.;
-  this.obj.uniforms.iGlobalTime.value = elapsedSeconds;
+  this.obj.uniforms.time.value = elapsedSeconds;
 };
 
 init(new GameObject());
