@@ -1,0 +1,109 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, Sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  padding: 0;
+  text-decoration: none;
+}
+
+h1 { font-size: 1.4em; margin: 1em 0 0.5em 0; }
+h2 { font-size: 1.3em; margin: 1.5em 0 0.5em 0; }
+h3 { font-size: 1.1em; margin: 0.3em 0 0 0; }
+h4 { font-size: 1em; margin: 0.2em 0 0 0; }
+
+p {
+  margin: 0 0 0.5em 0;
+  line-height: 1.5em;
+}
+
+a {
+  color: blue;
+  text-decoration: none;
+}
+
+a:hover {
+  border-bottom: dashed 1px grey;
+}
+
+ul {
+  margin: 0;
+  padding: 1em 0 1em 10px;
+}
+
+li {
+  margin: 0;
+}
+
+th {
+  text-align: left;
+  font-size: 1.5em;
+  padding-top: 1em;
+  text-decoration: underline;
+}
+
+img {
+  border: none;
+}
+
+.float {
+  float: right;
+  margin-left: 2em;
+  text-align: center;
+}
+
+.printonly {
+  display: none;
+}
+
+.entry {
+  margin: 2em 0;
+}
+
+#nav {
+  margin: 0;
+  padding: 7em 1em 1em 3em;
+  background: url('mars-dustdevil.gif') no-repeat;
+  color: white;
+}
+
+#nav a {
+  margin: 0;
+  padding: 0 3px;
+  color: #abcdef;
+}
+
+#content {
+  margin: 3em;
+  padding: 0;
+}
+
+#footer {
+  clear: both;
+  margin: 3em;
+  padding: 0;
+  font-size: 10px;
+  text-align: right;
+  border-top: solid 1px black;
+}
+
+@media print {
+
+  .printonly {
+    display: block;
+  }
+
+  .webonly {
+    display: none;
+  }
+
+  #nav {
+    display: none;
+  }
+
+  #footer {
+    display: none;
+  }
+}

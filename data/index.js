@@ -2,6 +2,7 @@ import {getHashParams,setHashParams} from '/net/web/hashparams.js';
 import {dom} from '/net/web/dom.js';
 import {fetch} from '/net/web/xhr.js';
 import {Dataset} from './dataset.js';
+import {Form} from './form.js';
 
 function num(input) {
   return parseFloat(input.value);
@@ -11,27 +12,6 @@ function numberWithCommas(x) {
   if (x)
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   return '';
-}
-
-class Form {
-  constructor(form) {
-    this.form = form;
-    this.button = dom('button');
-    this.button.onclick = update;
-  }
-  fromModel(m) {
-    for (let i in m) {
-      const parsed = parseFloat(m[i]);
-      this.form[i].value = isNaN(parsed) ? m[i] : parsed;
-    }
-  }
-  toModel(m) {
-    for (let i in m) {
-      const formVal = this.form[i].value;
-      const parsed = parseFloat(formVal);
-      m[i] = isNaN(parsed) ? formVal : parsed;
-    }
-  }
 }
 
 let M;
@@ -64,7 +44,9 @@ function onLoad(model, control) {
     getHashParams(model);
   }
   C = control;
-  F = new Form(document.forms.default);
+  F = new Form(document.forms.default, () => {
+      update();
+    });
   F.fromModel(model);
   D = loadData();
 }

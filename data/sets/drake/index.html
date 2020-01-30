@@ -1,83 +1,88 @@
+<!DOCTYPE html>
 <html>
-<head>
-  <link rel="stylesheet" href="/data/index.css"/>
-  <link rel="stylesheet" href="index.css"/>
-  <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
-  <script type="module" src="./index.js" defer></script>
-<body>
+  <head>
+    <link rel="stylesheet" href="/data/index.css"/>
+    <link rel="stylesheet" href="index.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+    <!--<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>-->
+    <script type="module" src="./index.js" defer></script>
+  <body>
 
-<h1>Drake Equation Calculator</h1>
+    <h1>Drake Equation Calculator</h1>
 
-<p>The Drake Equation is used to estimate the number of
-Extraterrestrial civilizations in our galaxy.  It is defined
-at <a href="https://en.wikipedia.org/wiki/Drake_equation">Wikipedia/Drake_equation</a>
-and reproduced here for convenience. You can use the calculator below
-to play with it.
+    <p>The Drake Equation is used to estimate the number of
+      Extraterrestrial civilizations in our galaxy.  It is defined
+      at <a href="https://en.wikipedia.org/wiki/Drake_equation">Wikipedia/Drake_equation</a>
+      and reproduced here for convenience. You can use the calculator below
+      to play with it.
 
-<p>The Drake Equation is:
+    <p>The Drake Equation is:
 
-<div style="margin-left: 2em">
-  <form name="default">
-    <table>
-      <tr>
-        <th style="font-style: italic">N
-        <th>=
-        <th>\(R_{∗}\)
-        <th>\(\cdot\)
-        <th>\(f_p\)
-        <th>\(\cdot\)
-        <th>\(n_e\)
-        <th>\(\cdot\)
-        <th>\(f_l\)
-        <th>\(\cdot\)
-        <th>\(f_i\)
-        <th>\(\cdot\)
-        <th>\(f_c\)
-        <th>\(\cdot\)
-        <th>\(L\)
-        <th>
-      </tr>
-      <tr>
-        <td><input type="text" name="N" value="?" readonly/>
-        <td>
-        <td colspan=2><input type="text" name="Rs" value=""/>
-        <td colspan=2><input type="text" name="Fp" value=""/>
-        <td colspan=2><input type="text" name="Ne" value=""/>
-        <td colspan=2><input type="text" name="Fl" value=""/>
-        <td colspan=2><input type="text" name="Fi" value=""/>
-        <td colspan=2><input type="text" name="Fc" value=""/>
-        <td><input type="text" name="L" value=""/>
-        <td>
-    </table>
-    Reference: <input type="text" name="Reference" value="" size="50" style="width: 20em"/>
-  </form>
+      <div style="margin-left: 2em">
+        <form name="default">
+          <table>
+            <tr>
+              <th style="font-style: italic">N
+              <th>=
+              <th>\(R_{∗}\)
+              <th>\(\cdot\)
+              <th>\(f_p\)
+              <th>\(\cdot\)
+              <th>\(n_e\)
+              <th>\(\cdot\)
+              <th>\(f_l\)
+              <th>\(\cdot\)
+              <th>\(f_i\)
+              <th>\(\cdot\)
+              <th>\(f_c\)
+              <th>\(\cdot\)
+              <th>\(L\)
+              <th>
+            </tr>
+            <tr>
+              <td><input type="text" name="N" value="?" readonly/>
+              <td>
+              <td colspan=2><input type="text" name="Rs" value=""/>
+              <td colspan=2><input type="text" name="Fp" value=""/>
+              <td colspan=2><input type="text" name="Ne" value=""/>
+              <td colspan=2><input type="text" name="Fl" value=""/>
+              <td colspan=2><input type="text" name="Fi" value=""/>
+              <td colspan=2><input type="text" name="Fc" value=""/>
+              <td><input type="text" name="L" value=""/>
+              <td>
+          </table>
+          Reference: <input type="text" name="Reference" value="" size="50" style="width: 20em"/>
+        </form>
 
-  <button id="button">Calculate</button>
+        <button id="button">Calculate</button>
 
-  <div id="definitions">
-    <p>\(N\) = the number of civilizations in our galaxy with which communication might be possible (i.e. which are on our current past light cone);
-      and
-    <p>\(R_{∗}\) = the average rate of star formation in our galaxy
-    <p>\(f_p\) = the fraction of those stars that have planets
-    <p>\(n_e\) = the average number of planets that can
-      potentially support life per star that has planets
-    <p>\(f_l\) = the fraction of planets that could support life
-      that actually develop life at some point
-    <p>\(f_i\) = the fraction of planets with life that actually
-      go on to develop intelligent life (civilizations)
-    <p>\(f_c\) = the fraction of civilizations that develop a
-      technology that releases detectable signs of their existence
-      into space
-    <p>\(L\) = the length of time for which such civilizations
-      release detectable signals into space
-    <p>Reference = Source of the parameters.
-  </div>
-</div>
+        <div id="definitions">
+          <p>\(N\) = the number of civilizations in our galaxy with which communication might be possible (i.e. which are on our current past light cone);
+            and
+          <p>\(R_{∗}\) = the average rate of star formation in our galaxy
+          <p>\(f_p\) = the fraction of those stars that have planets
+          <p>\(n_e\) = the average number of planets that can
+            potentially support life per star that has planets
+          <p>\(f_l\) = the fraction of planets that could support life
+            that actually develop life at some point
+          <p>\(f_i\) = the fraction of planets with life that actually
+            go on to develop intelligent life (civilizations)
+          <p>\(f_c\) = the fraction of civilizations that develop a
+            technology that releases detectable signs of their existence
+            into space
+          <p>\(L\) = the length of time for which such civilizations
+            release detectable signals into space
+          <p>Reference = Source of the parameters.
+        </div>
+      </div>
 
-<h2>Dataset</h2>
+      <h2>Dataset</h2>
 
-<div id="dataset"></div>
+      <div id="dataset"></div>
 
-<div id="footer">
-  <a target="new" href="https://github.com/pablo-mayrgundter/pablo-mayrgundter.github.io/tree/master/data/sets/drake">View source on github</a> | 
-  Text from Wikipedia is licensed under <a href="https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License">Creative Commons Attribution-ShareAlike</a>.
+      <div id="footer">
+        <a target="new" href="https://github.com/pablo-mayrgundter/pablo-mayrgundter.github.io/tree/master/data/sets/drake">View source on github</a> | 
+        Text from Wikipedia is licensed under <a href="https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License">Creative Commons Attribution-ShareAlike</a>.

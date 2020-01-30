@@ -1,0 +1,15 @@
+#mainText {
+  margin: 1em 1em 0 0;
+}
+
+#mainSidebar {
+  float: right;
+  width: 30%;
+  margin: 1em;
+  padding: 0.5em;
+  background: #f00;
+}
+
+#mainSidebar a:visited {
+  color: blue;
+}

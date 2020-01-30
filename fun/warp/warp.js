@@ -34,7 +34,8 @@ function ifs() {
   serial++;
 }
 
-var maxFreq = 2000;
+var maxFreq = 1000;
+let updates = {};
 /**
  * A visitor for each node in the graph, to compute and assign its new
  * position and color (which is used for its edges as well).
@@ -46,24 +47,9 @@ function renderNode(n) {
   // Move the node to its new position
   n.x = x;
   n.y = y;
-  if (n.id == 10) {
+  if (synth && n.id < numFreqs) {
+    updates[`tone${n.id}.freq`] = maxFreq * (1 + y);
     n.x = -1;
-    // synth.set("tone1.freq", n.y * maxFreq);
-    // synth.set("tone1.freq", 600);
-    n.y = -1;
-  }
-  if (n.id == 100) {
-    n.x = 1;
-    //    synth.set("tone2.freq", n.y * maxFreq);
-    n.y = -1;
-  }
-  if (n.id == 200) {
-    n.x = -1;
-    n.y = 1;
-  }
-  if (n.id == 400) {
-    n.x = 1;
-    n.y = 1;
   }
 
   // Color mapping.
@@ -83,10 +69,15 @@ function renderSystem() {
   // initial vectors.
   for (var i = 0; i < 10; i++) {
     ifs();
-  }  
+  }
 
   // Positions the nodes in the graph.
   graph.iterNodes(renderNode);
+  if (synth) {
+    console.log(updates);
+    synth.set(updates);
+    updates = {};
+  }
 
   // The 2 params tell sigma to use "direct" drawing, which gets rid
   // of flickering in the default approach.
@@ -112,9 +103,6 @@ function frame() {
   // frames.
   if (morphSpeed > 0) {
     animId = window.requestAnimationFrame(frame);
-    if (!soundRunning) {
-      startSound();
-    }
   } else {
     animId = null;
     if (soundRunning) {

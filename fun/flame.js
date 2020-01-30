@@ -26,7 +26,7 @@ if (uniforms && uniforms.json) {
     },
     iter: {
       type: "i",
-      value: 8
+      value: 1
     }
   };
 }
@@ -54,7 +54,7 @@ document.onkeypress = (e) => {
   hash.setHashParams(uniforms);
 };
 
-function init(item) {
+function makeScene(flameObject) {
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
   camera.position.x = 0;
@@ -75,32 +75,42 @@ function init(item) {
   scene.add(light);
 
   function render() {
-    item.update();
+    flameObject.update();
     webgl.render(scene, camera);
     requestAnimationFrame(render);
+    console.log('.');
   }
-  scene.add(item.obj);
+  scene.add(flameObject.obj);
   render();
 }
 
-function GameObject() {
+
+function FlameObject() {
   this.geometry = new THREE.PlaneGeometry(window.innerWidth, window.innerHeight, 1);
-  uniforms.rez.value.x = window.innerWidth;
-  uniforms.rez.value.y = window.innerHeight;
+  this.uniforms = uniforms;
+  this.uniforms.rez.value.x = window.innerWidth;
+  this.uniforms.rez.value.y = window.innerHeight;
   this.material = new THREE.ShaderMaterial({
       uniforms: uniforms,
       vertexShader: document.getElementById('main.vert').textContent,
-      fragmentShader: document.getElementById('flame1.frag').textContent
+      fragmentShader: document.getElementById('flame.frag').textContent
     });
   this.obj = new THREE.Mesh(this.geometry, this.material);
-  this.obj.startTime = Date.now();
-  this.obj.uniforms = uniforms;
+  this.startTime = Date.now();
 }
 
-GameObject.prototype.update = function() {
-  const elapsedMilliseconds = Date.now() - this.obj.startTime;
+
+FlameObject.prototype.update = function() {
+  const elapsedMilliseconds = Date.now() - this.startTime;
   const elapsedSeconds = elapsedMilliseconds / 1000.;
-  this.obj.uniforms.time.value = elapsedSeconds;
+  this.uniforms.time.value = elapsedSeconds;
+  //this.uniforms.time.value.toFixed(3);
 };
 
-init(new GameObject());
+
+function init() {
+  console.log('here!');
+  makeScene(new FlameObject());
+}
+
+init();

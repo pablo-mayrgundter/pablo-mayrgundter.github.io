@@ -1,5 +1,65 @@
 <html>
-  <body style="margin: 0">
-    <canvas id="canvas" style="margin-left: 22.5%"/>
-    <script type="module" src="/net/web/hashparams.js"></script>
+  <head>
+    <link rel="stylesheet" href="/data/index.css"/>
+    <link rel="stylesheet" href="index.css"/>
     <script type="module" src="/phys/wave/index.js"></script>
+    <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+  <body>
+    <form name="default">
+      <table>
+        <tr>
+          <th style="font-style: italic">N
+          <th>=
+          <th>\(c1\)
+          <th>\(c2\)
+          <th>\(c3\)
+          <th>\(c4\)
+          <th>\(c5\)
+          <th>\(c6\)
+          <th>\(c7\)
+          <th>\(c8\)
+          <th>\(f1\)
+          <th>\(f2\)
+          <th>\(f3\)
+          <th>\(f4\)
+          <th>\(f5\)
+          <th>\(f6\)
+          <th>\(i1\)
+          <th>\(i2\)
+          <th>\(i3\)
+          <th>\(i4\)
+        </tr>
+        <tr>
+          <td><input type="text" name="N" value="?" readonly/>
+          <td>
+          <td><input type="text" name="c1" value=""/>
+          <td><input type="text" name="c2" value=""/>
+          <td><input type="text" name="c3" value=""/>
+          <td><input type="text" name="c4" value=""/>
+          <td><input type="text" name="c5" value=""/>
+          <td><input type="text" name="c6" value=""/>
+          <td><input type="text" name="c7" value=""/>
+          <td><input type="text" name="c8" value=""/>
+          <td><input type="text" name="f1" value=""/>
+          <td><input type="text" name="f2" value=""/>
+          <td><input type="text" name="f3" value=""/>
+          <td><input type="text" name="f4" value=""/>
+          <td><input type="text" name="f5" value=""/>
+          <td><input type="text" name="f6" value=""/>
+          <td><input type="text" name="i1" value=""/>
+          <td><input type="text" name="i2" value=""/>
+          <td><input type="text" name="i3" value=""/>
+          <td><input type="text" name="i4" value=""/>
+      </table>
+      Reference: <input type="text" name="Reference" value="" size="50" style="width: 20em"/>
+    </form>
+
+    <button id="button">Calculate</button>
+
+    <canvas id="canvas" style="margin-left: 22.5%"></canvas>
+
+    <h2>Dataset</h2>
+    <div id="dataset"/>
+
+    <div id="footer">
+      <a target="new" href="https://github.com/pablo-mayrgundter/pablo-mayrgundter.github.io/tree/master/data/sets/drake">View source on github</a>

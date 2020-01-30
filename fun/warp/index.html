@@ -1,12 +1,16 @@
 <html>
   <head>
     <script src="../../js/sigma.min.js"></script>
-    <script src="../../js/flocking-all.min.js"></script>
+    <script src="flocking-all.min.js"></script>
+    <!--<script src="../../js/flocking-all.min.js"></script>-->
     <script src="warp.js"></script>
     <script src="mixer.js"></script>
     <link rel="stylesheet" type="text/css" href="main.css"/>
   </head>
-  <body onload="init(); anim()" onclick="anim()">
-    <div id="canvas"></div>
+  <body onload="init(); anim()">
+    <div id="menu">
+      <button onclick="toggleSound()">Sound</button>
+    </div>
+    <div id="canvas" onclick="anim()"></div>
   </body>
 </html>
