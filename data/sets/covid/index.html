@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../../index.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+    <!--<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>-->
+    <script type="module" src="./index.js" defer></script>
+  <body>
+
+    <h1>COVID Calculator</h1>
+
+    <p>If COVID-19 continues to grow exponentially in the US, we will exhaust hospital beds within 3 weeks:
+      <div style="margin-left: 2em">
+        <form name="default">
+          <table>
+            <tr>
+              <th style="font-style: italic">NewBedsNeeded
+              <th>=
+              <th>\(CurrentCases\)
+              <th>\(\cdot\)
+              <th>\(DailyGrowthRate\)
+              <th>^
+              <th><sup style="padding-top: -5px">\(DaysOfGrowth\)</sup>
+              <th>\(\cdot\)
+              <th>\(SevereAndCriticalRate\)
+              <th>
+            </tr>
+            <tr>
+              <td><input type="text" name="NewBedsNeeded" value="?" readonly/>
+              <td>
+              <td colspan=2><input type="text" name="CurrentCases" value=""/>
+              <td colspan=2><input type="text" name="DailyGrowthRate" value=""/>
+              <td colspan=2><input type="text" name="DaysOfGrowth" value=""/>
+              <td colspan=2><input type="text" name="SevereAndCriticalRate" value=""/>
+              <td>
+          </table>
+          Reference: <input type="text" name="Reference" value="" size="50" style="width: 20em"/>
+        </form>
+
+        <button id="button">Calculate</button>
+
+        <div id="definitions">
+          <p>\(NewBedsNeeded\) = Number of new hospital beds needed for Severe and Critical Cases.
+          <p>\(CurrentCases\) = The number of COVID-19 cases in the US as of March 9, 2020.
+          <p>\(DailyGrowthRate\) = Number of today's cases / Number of yesterday's cases.
+          <p>\(SevereAndCriticalRate\) = Percentage of cases requiring a hospital bed.
+          <p>\(DaysOfGrowth\) = How many days to run the simulation.
+          <p>Reference = Source of the parameters.
+        </div>
+      </div>
+
+      <h2>Dataset</h2>
+
+      <div id="dataset"></div>
+
+      <div id="footer">
+        <a target="new" href="https://github.com/pablo-mayrgundter/pablo-mayrgundter.github.io/tree/master/data/sets/covid">View source on github</a>

@@ -15,8 +15,8 @@
     <p>The Drake Equation is used to estimate the number of
       Extraterrestrial civilizations in our galaxy.  It is defined
       at <a href="https://en.wikipedia.org/wiki/Drake_equation">Wikipedia/Drake_equation</a>
-      and reproduced here for convenience. You can use the calculator below
-      to play with it.
+      and reproduced here for convenience. You can use the calculator
+      below to play with it.
 
     <p>The Drake Equation is:
 
@@ -26,7 +26,7 @@
             <tr>
               <th style="font-style: italic">N
               <th>=
-              <th>\(R_{âˆ—}\)
+              <th>\(R_{œôø·}\)
               <th>\(\cdot\)
               <th>\(f_p\)
               <th>\(\cdot\)
@@ -61,7 +61,7 @@
         <div id="definitions">
           <p>\(N\) = the number of civilizations in our galaxy with which communication might be possible (i.e. which are on our current past light cone);
             and
-          <p>\(R_{âˆ—}\) = the average rate of star formation in our galaxy
+          <p>\(R_{œôø·}\) = the average rate of star formation in our galaxy
           <p>\(f_p\) = the fraction of those stars that have planets
           <p>\(n_e\) = the average number of planets that can
             potentially support life per star that has planets

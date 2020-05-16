@@ -21,14 +21,14 @@ let F;
 
 function update() {
   F.toModel(M);
-  C.calculateDrakeNumber();
+  C.calculate();
   F.fromModel(M);
   setHashParams(M);
 }
 
-function loadData() {
+function loadData(datasetName) {
   const dataset = new Dataset();
-  fetch('/data/sets/drake/index.csv', (rsp) => {
+  fetch(`/data/sets/${datasetName}/index.csv`, (rsp) => {
       dataset.fromCsv(rsp);
       dataset.show(dom('dataset'), (row) => {
           F.fromModel(row);
@@ -38,7 +38,7 @@ function loadData() {
   return dataset; // TODO(pablo): promise?
 }
 
-function onLoad(model, control) {
+function onLoad(model, control, datasetName) {
   if (location.hash) {
     // TODO: clean and reify params.
     getHashParams(model);
@@ -48,7 +48,7 @@ function onLoad(model, control) {
       update();
     });
   F.fromModel(model);
-  D = loadData();
+  D = loadData(datasetName);
 }
 
 export function init(datasetName) {
@@ -57,7 +57,7 @@ export function init(datasetName) {
       (async () => {
         const module = await import(`/data/sets/${datasetName}/control.mjs`);
         const c = new module.Control(M);
-        onLoad(M, c);
+        onLoad(M, c, datasetName);
       })();
     });
 }

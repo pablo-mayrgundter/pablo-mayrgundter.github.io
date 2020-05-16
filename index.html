@@ -1,22 +1,70 @@
-I hope you enjoy these demos.  Drop me a line at pablo mayrgundter gmail.  Cheers!
+<html>
+  <head>
+    <style>
+      body {
+        background: grey;
+        font-family: Monaco;
+      }
+      #nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 220px;
+        height: 100%;
+        padding-right: 3em;
+        text-align: center;
+        overflow-y: scroll;
+      }
+      #main {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 83%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="nav">
+      I hope you enjoy some of these softwares!
 
-<ul>
-  Math
-  <ul>
-    <li><a href="fun/sine.html">Sine wave</a>
-    <li><a href="fun/sine-toy.html">Sine Toy (shader program)</a>
-    <li><a href="fun/warp/index.html">Warp</a>
-  </ul>
-  Physics
-  <ul>
-    <li><a href="fun/magnetic-field.html">Magnetic force fields (shader program)</a>
-  </ul>
-  Space
-  <ul>
-    <li><a href="https://pablo-mayrgundter.github.io/celestiary/#sun">Celestiary solar system simulator</a>
-  </ul>
-  Data
-  <ul>
-    <li><a href="data/index.html">Datawiki</a>
-  </ul>
-</ul>
+      <p>Mandelbrot<br/>
+      <a href="fun/mandelbrot/index.html" target="main">
+        <img src="fun/mandelbrot/mandelbrot-thumb-2.png" width="200"/></a>
+
+      <p>Magnetic Field<br/>
+      <a href="fun/magnetic-field.html" target="main">
+        <img src="fun/magnetic-field-ss.png" width="200" /></a>
+
+      <p>Fluid Heating<br/>
+      <a href="phys/fluid/index.html" target="main">
+        <img src="phys/fluid/ss.png" width="200" /></a>
+
+      <p>Warp<br/>
+      <a href="fun/warp/index.html" target="main">
+        <img src="fun/warp/ss.png"/></a>
+
+      <p>Grid<br/>
+      <a href="game/gol/index.html" target="main">
+        <img src="game/gol/ss.png"/></a>
+
+      <p>Sine<br/>
+      <a href="fun/sine.html" target="main">
+        <img src="fun/sine-ss.png" width="200"/></a>
+
+<!--      <p>Sine Toy<br/>
+      <a href="fun/sine-toy.html" target="main">
+        <img src="fun/sine-toy-ss.png" width="200"/></a>
+-->
+      <p>Celestiary<br/>
+      <a href="https://celestiary.appspot.com/" target="new">
+        <img src="pablo/celestiary/ss.png" width="200"/></a>
+<!--
+      <p>Flame<br/>
+      <a href="math/complexity/flame-anim.gif" target="main">
+        <img src="math/complexity/wall_thumb.png" width="200"/></a>
+-->
+    </div>
+    <iframe name="main" id="main" src="fun/mandelbrot/index.html" border="0"/>
+  </body>
+</html>

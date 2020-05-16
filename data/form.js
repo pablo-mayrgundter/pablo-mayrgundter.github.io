@@ -1,4 +1,4 @@
-import {dom} from '/net/web/dom.js';
+import {dom} from '../net/web/dom.js';
 
 export class Form {
   constructor(form, updateCb) {
@@ -7,16 +7,20 @@ export class Form {
     this.button.onclick = updateCb;
   }
   fromModel(m) {
-    for (let i in m) {
-      const parsed = parseFloat(m[i]);
-      this.form[i].value = isNaN(parsed) ? m[i] : parsed;
+    const model = m.json;
+    for (let i in model) {
+      const parsed = parseFloat(model[i]);
+      console.log(i);
+      this.form[i].value = isNaN(parsed) ? model[i] : parsed;
     }
   }
   toModel(m) {
-    for (let i in m) {
+    const model = m.json;
+    for (let i in model) {
+      console.log(i);
       const formVal = this.form[i].value;
       const parsed = parseFloat(formVal);
-      m[i] = isNaN(parsed) ? formVal : parsed;
+      model[i] = isNaN(parsed) ? formVal : parsed;
     }
   }
 }
