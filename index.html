@@ -10,11 +10,6 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <style type="text/css">
       body {
-        overscroll-behavior: none;
-        overflow: hidden;
-        padding: 0;
-        height: 100%;
-        max-height: 100%;
         color: white;
         background: black;
         font-family: Monaco;
@@ -24,86 +19,49 @@
         margin-top: 1.5em;
       }
       #nav {
-        position: absolute;
-        top: 0px;
-        left: 0px;
         width: 210px;
         height: 100%;
-        padding: 1em;
+        margin: 1em auto;
         text-align: center;
-        overflow-y: scroll;
-        overscroll-behavior: none;
-      }
-      #main-frame {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 83%;
-        height: 100%;
-        border: none;
       }
     </style>
-    <script type="text/javascript">
-      function setHash(anchor) {
-        if (location) {
-          location.hash = anchor
-        }
-        checkHash()
-      }
-      function checkHash() {
-        if (location.hash) {
-          document.getElementById('main-frame').src = location.hash.substring(1)
-        }
-        return false
-      }
-    </script>
   </head>
-  <body onload="checkHash()">
+  <body>
     <div id="nav">
-      <a onclick="setHash('welcome.html')" target="main">🥷 </a
+      🥷
       <p>I hope you enjoy some of these softwares!
 
+      <h1>Celestiary</h1>
+      <a href="https://celestiary.github.io/" target="new">
+        <img src="pablo/celestiary/ss.png" width="200"/></a>
+
       <h1>Mandelbrot</h1>
-      <a onclick="setHash('fun/mandelbrot/index.html')" target="main">
+      <a href="fun/mandelbrot/index.html">
         <img src="fun/mandelbrot/mandelbrot-thumb-2.png" width="200"/></a>
 
       <h1>Gumdrops</h1>
-      <a onclick="setHash('gumdrops/index.html')" target="main">
+      <a href="gumdrops/index.html">
         <img src="gumdrops/gumdrop_ss.png" width="200"/></a>
 
       <h1>Magnetic Field</h1>
-      <a onclick="setHash('fun/magnetic-field.html')" target="main">
+      <a href="fun/magnetic-field.html">
         <img src="fun/magnetic-field-ss.png" width="200" /></a>
 
       <h1>Fluid Heating</h1>
-      <a onclick="setHash('phys/fluid/index.html')" target="main">
+      <a href="phys/fluid/index.html">
         <img src="phys/fluid/ss.png" width="200" /></a>
 
       <h1>Warp</h1>
-      <a onclick="setHash('fun/warp/index.html')" target="main">
+      <a href="fun/warp/index.html">
         <img src="fun/warp/ss.png"/></a>
 
       <h1>Grid</h1>
-      <a onclick="setHash('game/gol/index.html')" target="main">
+      <a href="game/gol/index.html">
         <img src="game/gol/ss.png"/></a>
 
       <h1>Sine</h1>
-      <a onclick="setHash('fun/sine.html')" target="main">
+      <a href="fun/sine.html">
         <img src="fun/sine-ss.png" width="200"/></a>
-
-<!--      <h1>Sine Toy</h1>
-      <a onclick="setHash('fun/sine-toy.html')" target="main">
-        <img src="fun/sine-toy-ss.png" width="200"/></a>
--->
-      <h1>Celestiary</h1>
-      <a onclick="setHash('https://celestiary.github.io/')" target="new">
-        <img src="pablo/celestiary/ss.png" width="200"/></a>
-<!--
-      <h1>Flame</h1>
-      <a onclick="setHash('math/complexity/flame-anim.gif')" target="main">
-        <img src="math/complexity/wall_thumb.png" width="200"/></a>
--->
     </div>
-    <iframe name="main-frame" id="main-frame" src="welcome.html"/>
   </body>
 </html>
